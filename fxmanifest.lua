@@ -4,7 +4,7 @@ lua54 'yes'
 games { 'gta5' }
 
 name 'prdm_scripts'
-version '1.0.2'
+version '1.0.3'
 description 'Simple scripts to improve quality of life for development'
 author 'i_Zolox'
 
