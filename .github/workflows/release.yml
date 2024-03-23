@@ -51,10 +51,10 @@ jobs:
 
       - name: Bundle files
         run: |
-          mkdir -p ./temp/Renewed-Weathersync
-          cp ./{LICENSE,README.md,fxmanifest.lua} ./temp/Renewed-Weathersync
-          cp -r ./{client,compatability,config,server} ./temp/Renewed-Weathersync
-          cd ./temp && zip -r ../Renewed-Weathersync.zip ./Renewed-Weathersync
+          mkdir -p ./temp/lite-core
+          cp ./{LICENSE,fxmanifest.lua} ./temp/lite-core
+          cp -r ./{classes,client,data,server} ./temp/lite-core
+          cd ./temp && zip -r ../lite-core.zip ./lite-core
 
       - name: Create Release
         uses: 'marvinpinto/action-automatic-releases@v1.2.1'
