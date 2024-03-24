@@ -1,6 +1,6 @@
 Commands = {}
 
-Commands.Vehicles = LoadResourceFile('paradym_core', "data/vehicles.json")
+Commands.Vehicles = LoadResourceFile(GetCurrentResourceName(), "data/vehicles.json")
 Commands.VehicleData = json.decode(Commands.Vehicles) or {}
 
 Commands.SpawnVehicle = function(source, model, coords, heading, warp, vehicleData)
@@ -21,7 +21,7 @@ Commands.SpawnVehicle = function(source, model, coords, heading, warp, vehicleDa
     local attempts = 0
 
     repeat
-        success = lib.callback.await('paradym_core:validateOwnership', owner, NetworkGetNetworkIdFromEntity(vehicle))
+        success = lib.callback.await('lite-core:validateOwnership', owner, NetworkGetNetworkIdFromEntity(vehicle))
         if not success then
             attempts += 1
             owner = NetworkGetEntityOwner(vehicle)
@@ -34,7 +34,7 @@ Commands.SpawnVehicle = function(source, model, coords, heading, warp, vehicleDa
 
     if vehicleData then
         print('Setting vehicle properties')
-        lib.callback.await('paradym_core:setVehicleProperties', owner, NetworkGetNetworkIdFromEntity(vehicle), vehicleData)
+        lib.callback.await('lite-core:setVehicleProperties', owner, NetworkGetNetworkIdFromEntity(vehicle), vehicleData)
     end
 
     if warp then
@@ -102,11 +102,11 @@ lib.addCommand('toggleai', {
     Core.ToggleAI()
 end)
 
-lib.callback.register('paradym_core:spawnVehicle', function(source, model, coords, heading, warp, vehicleData)
+lib.callback.register('lite-core:spawnVehicle', function(source, model, coords, heading, warp, vehicleData)
     return Commands.SpawnVehicle(source, model, coords, heading, warp, vehicleData)
 end)
 
-RegisterNetEvent('paradym_core:teleportToPlayer', function(targetId)
+RegisterNetEvent('lite-core:teleportToPlayer', function(targetId)
     local src = source
     local target = GetPlayerPed(targetId)
     local coords = GetEntityCoords(target)
@@ -114,7 +114,7 @@ RegisterNetEvent('paradym_core:teleportToPlayer', function(targetId)
     SetEntityCoords(GetPlayerPed(src), coords.x, coords.y, coords.z, true, false, false, false)
 end)
 
-RegisterNetEvent('paradym_core:teleportPlayer', function(targetId)
+RegisterNetEvent('lite-core:teleportPlayer', function(targetId)
     local src = source
     local target = GetPlayerPed(targetId)
     local coords = GetEntityCoords(GetPlayerPed(src))

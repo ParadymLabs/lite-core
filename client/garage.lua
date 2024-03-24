@@ -6,7 +6,7 @@ if Settings.Debug then SetResourceKvp('player_garage', '') end
 local DatastoreService = require 'classes.datastore'
 local GarageData = DatastoreService:new('player_garage')
 
-Garage.VehicleModelData = LoadResourceFile('paradym_core', "data/vehicle_models.json")
+Garage.VehicleModelData = LoadResourceFile(GetCurrentResourceName(), "data/vehicle_models.json")
 Garage.VehicleModels = {}
 
 Garage.CreateGarageData = function()
@@ -194,9 +194,9 @@ Garage.SpawnVehicle = function(vehicleId)
     local coords = GetEntityCoords(cache.ped)
     local heading = GetEntityHeading(cache.ped)
 
-    local vehicleNet = lib.callback.await('paradym_core:spawnVehicle', false, model, coords, heading, true, vehicleData)
+    local vehicleNet = lib.callback.await('lite-core:spawnVehicle', false, model, coords, heading, true, vehicleData)
 
-    TriggerServerEvent('paradym_core:unStoreVehicle', vehicleNet, vehicleId)
+    TriggerServerEvent('lite-core:unStoreVehicle', vehicleNet, vehicleId)
 
     vehicles[vehicleId].stored = false
 
@@ -424,11 +424,11 @@ Garage.ResetAll = function()
     Utils.DebugPrint('WARN', 'Garage data has been reset.')
 end
 
-lib.callback.register('paradym_core:validateOwnership', function(netId)
+lib.callback.register('lite-core:validateOwnership', function(netId)
     return Garage.ValidateVehicleOwnership(netId)
 end)
 
-lib.callback.register('paradym_core:setVehicleProperties', function(netId, props)
+lib.callback.register('lite-core:setVehicleProperties', function(netId, props)
     local vehicle = NetToVeh(netId)
     Garage.SetVehicleProperies(vehicle, props, false)
 end)

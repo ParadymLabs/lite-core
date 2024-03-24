@@ -9,7 +9,7 @@ Commands.SpawnServerVehicle = function(model)
         DeleteEntity(existingVehicle)
     end
 
-    lib.callback.await('paradym_core:spawnVehicle', false, model, coords, heading, true)
+    lib.callback.await('lite-core:spawnVehicle', false, model, coords, heading, true)
 end
 
 Commands.ShowId = function()
@@ -123,13 +123,13 @@ Commands.ResetAll = function()
 end
 
 RegisterCommand('clothing', function(source, args, rawCommand)
-    TriggerEvent('paradym_core:clothingMenu')
+    TriggerEvent('lite-core:clothingMenu')
 end)
 
 TriggerEvent('chat:addSuggestion', '/clothing', 'Open the clothing menu')
 
 RegisterCommand('outfits', function(source, args, rawCommand)
-    TriggerEvent('paradym_core:outfits')
+    TriggerEvent('lite-core:outfits')
 end)
 
 TriggerEvent('chat:addSuggestion', '/outfits', 'Open the outfits menu')

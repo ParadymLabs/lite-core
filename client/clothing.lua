@@ -234,5 +234,5 @@ if not ClothingData.data or not ClothingData.data.hasData then
     Clothing.CreateClothingData()
 end
 
-RegisterNetEvent('paradym_core:clothingMenu', Clothing.UpdateCharacterAppearance)
-RegisterNetEvent('paradym_core:outfits', Clothing.OpenOutfitMenu)
+RegisterNetEvent('lite-core:clothingMenu', Clothing.UpdateCharacterAppearance)
+RegisterNetEvent('lite-core:outfits', Clothing.OpenOutfitMenu)

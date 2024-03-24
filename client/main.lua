@@ -11,7 +11,7 @@ Core.LoggedOut = false
 
 Core.CreatePlayerData = function()
     PlayerData:save({
-        identifier = lib.callback.await('paradym_core:getPlayerIdentifier'),
+        identifier = lib.callback.await('lite-core:getPlayerIdentifier'),
         characters = {},
         metadata = {},
         hasData = true
@@ -163,7 +163,7 @@ Core.SelectCharacter = function()
     menu.options[#menu.options + 1] = {
         title = 'Create Character',
         onSelect = function()
-            TriggerEvent('paradym_core:openCharacterCreation')
+            TriggerEvent('lite-core:openCharacterCreation')
         end,
         icon = 'plus',
     }
@@ -398,7 +398,7 @@ Core.Spawn = function(characterId)
         type = 'success'
     })
 
-    TriggerServerEvent('paradym_core:characterLogin', characterData)
+    TriggerServerEvent('lite-core:characterLogin', characterData)
 end
 
 Core.Logout = function()
@@ -406,7 +406,7 @@ Core.Logout = function()
     local heading = GetEntityHeading(cache.ped)
 
     Utils.DebugPrint('INFO', 'Logging out...')
-    TriggerServerEvent('paradym_core:characterLogout')
+    TriggerServerEvent('lite-core:characterLogout')
 
     LocalPlayer.state:set('spawned', false, true)
     LocalPlayer.state:set('character', nil, true)
@@ -521,7 +521,7 @@ Core.Init = function()
         local characterData = LocalPlayer.state.character
 
         Core.CurrentCharacter = characterData.id
-        TriggerServerEvent('paradym_core:characterLogin', characterData)
+        TriggerServerEvent('lite-core:characterLogin', characterData)
     end
 
     Core.PlayerData = PlayerData
@@ -566,6 +566,6 @@ end)
 Core.Init()
 Core.MainThread()
 
-RegisterNetEvent('paradym_core:resoleNilCharacter', Core.SelectCharacter)
-RegisterNetEvent('paradym_core:openCharacterCreation', Core.CreateCharacter)
-RegisterNetEvent('paradym_core:toggleAI', Core.SetAIEnabled)
+RegisterNetEvent('lite-core:resoleNilCharacter', Core.SelectCharacter)
+RegisterNetEvent('lite-core:openCharacterCreation', Core.CreateCharacter)
+RegisterNetEvent('lite-core:toggleAI', Core.SetAIEnabled)

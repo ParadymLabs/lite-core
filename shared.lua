@@ -1,10 +1,10 @@
 Utils = {}
 
 Utils.DebugTypes = {
-    INFO = '^5[paradym_core]^2',
-    WARN = '^5[paradym_core]^3',
-    ERROR = '^5[paradym_core]^1',
-    TABLE = '^5[paradym_core]^7'
+    INFO = '^5[lite-core]^2',
+    WARN = '^5[lite-core]^3',
+    ERROR = '^5[lite-core]^1',
+    TABLE = '^5[lite-core]^7'
 }
 
 Utils.DebugPrint = function(type, ...)

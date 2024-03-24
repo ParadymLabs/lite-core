@@ -106,6 +106,6 @@ VehicleParser.SaveVehicleData = function()
     local vehicleData, hashMap = VehicleParser.generateVehicleData(true)
 
     if vehicleData and next(vehicleData) then
-        lib.callback.await('paradym_core:saveVehicleData', false, vehicleData, hashMap)
+        lib.callback.await('lite-core:saveVehicleData', false, vehicleData, hashMap)
     end
 end

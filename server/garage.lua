@@ -1,5 +1,5 @@
 
-RegisterNetEvent('paradym_core:unStoreVehicle', function(netId, vehicleId)
+RegisterNetEvent('lite-core:unStoreVehicle', function(netId, vehicleId)
     local src = source
     local vehicle = NetworkGetEntityFromNetworkId(netId)
     if not vehicle then Utils.DebugPrint('ERROR', ('Error retrieving vehicle. vehicle: %s'):format(vehicle)) return end
