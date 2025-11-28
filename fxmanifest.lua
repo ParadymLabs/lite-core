@@ -6,7 +6,7 @@ games { 'gta5' }
 name 'prdm_scripts'
 version 'main'
 description 'Simple scripts to improve quality of life for development'
-author 'i_Zolox'
+author 'i_Zolox & nullpointing'
 
 files {
     'classes/*.lua',
