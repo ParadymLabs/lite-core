@@ -52,7 +52,7 @@ jobs:
       - name: Bundle files
         run: |
           mkdir -p ./temp/lite-core
-          cp ./{LICENSE,fxmanifest.lua} ./temp/lite-core
+          cp ./{LICENSE,fxmanifest.lua,settings.lua,shared.lua} ./temp/lite-core
           cp -r ./{classes,client,data,server} ./temp/lite-core
           cd ./temp && zip -r ../lite-core.zip ./lite-core
 
